@@ -8,15 +8,21 @@ function Polices() {
         <article className="p-5">
           <div className="article-content">
             <h2>Company's Polices</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Alias eos harum debitis assumenda.
-              Delectus pariatur perspiciatis eos nulla veritatis. Earum, aliquam.
-              Necessitatibus nostrum veritatis,
-              odit nulla incidunt aspernatur libero fugit.
-              Excepturi reiciendis ipsam perspiciatis, adipisci repellendus hic,
-              facere consequuntur libero quia dicta expedita,
-              quasi modi vero quis qui vitae ipsa.</p>
-            <Link className="btn btn-dark" to={"/ecommerce-website/"}>Home</Link>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              At sunt rem suscipit vero recusandae? Ipsum laboriosam nemo 
+              officia enim natus harum praesentium commodi alias sint? 
+              Placeat dolores aperiam, distinctio voluptas adipisci ex? 
+              Earum temporibus expedita dolore porro atque, quam modi beatae 
+              molestiae nam mollitia fuga consequuntur recusandae voluptatem 
+              odio dolor natus quasi placeat rerum. Ex numquam suscipit sit qui
+              saepe fuga perspiciatis sed, earum nemo repellat provident illo 
+              incidunt obcaecati, rerum assumenda eaque in eius tempore mollitia 
+              voluptate totam? Nam sapiente accusamus vero voluptate maiores impedit 
+              expedita, laboriosam repellat ducimus minima, illo perspiciatis velit 
+              deleniti obcaecati. Nemo temporibus officia adipisci?
+            </p>
+            <Link className="btn btn-dark" to={"/amazon/"}>Home</Link>
           </div>
         </article>
       </div>

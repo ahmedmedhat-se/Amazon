@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 function Navbar() {
   const [search, setSearch] = useState("");
   const [user, setUser] = useState(null);
+  const [collapsed, setCollapsed] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,12 +23,13 @@ function Navbar() {
     const keyword = search.trim().toLowerCase();
     if (!keyword) return;
 
-    if (["men", "women", "kids"].includes(keyword)) {
-      navigate(`/amazon/products/${keyword}`);
+    if (["clothes", "sports", "electronics"].includes(keyword)) {
+      navigate(`/amazon/category/${keyword}`);
     } else {
       navigate(`/amazon/${keyword}`);
     }
     setSearch("");
+    setCollapsed(true);
   };
 
   const handleLogout = () => {
@@ -35,88 +37,99 @@ function Navbar() {
     localStorage.removeItem("token");
     setUser(null);
     navigate("/amazon/");
+    setCollapsed(true);
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light p-3">
-      <div className="container-fluid d-flex align-items-center justify-content-between gap-3 flex-wrap">
-
-        {/* Logo */}
+    <nav className="navbar navbar-expand-md navbar-light bg-light p-3">
+      <div className="container-fluid">
         <Link className="navbar-brand me-3" to="/amazon/">
           <img src={logo} alt="Logo" width={100} className="rounded" />
         </Link>
 
-        {/* Search Form */}
-        <form onSubmit={handleSearch} className="d-flex align-items-center flex-grow-1 input-group" style={{ maxWidth: "600px" }}>
-          <div className="dropdown p-2">
-            <button
-              className="dropdown-toggle border-0"
-              id="dropdownId"
-              data-bs-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+        <button
+          className="navbar-toggler"
+          type="button"
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className={`collapse navbar-collapse w-100 ${collapsed ? "" : "show"}`}>
+          <div className="d-flex flex-column flex-md-row justify-content-between align-items-center w-100">
+
+            <form
+              onSubmit={handleSearch}
+              className="d-flex align-items-center input-group mx-md-auto my-3 my-md-0"
+              style={{ maxWidth: "600px", flexGrow: 1 }}
             >
-              Categories
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownId">
-              <Link className="dropdown-item" to="/amazon/products/clothes">Clothes</Link>
-              <Link className="dropdown-item" to="/amazon/products/electronics">Electronics</Link>
-              <Link className="dropdown-item" to="/amazon/products/sports">Sports</Link>
-            </div>
-          </div>
-          <input
-            className="form-control border-0"
-            type="text"
-            placeholder="Search for item or category..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button className="my-2 my-sm-0 border-0" type="submit">
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-        </form>
-
-        {/* Icons */}
-        <ul className="navbar-nav d-flex flex-row align-items-center gap-3 ms-3">
-
-          {!user && (
-            <li className="nav-item">
-              <Link className="nav-link" to="/amazon/auth">
-                <FontAwesomeIcon icon={faSignInAlt} /> Login
-              </Link>
-            </li>
-          )}
-
-          {user && (
-            <>
-              <li className="nav-item">
-                <Link
-                  className="nav-link"
-                  to={
-                    user.id === 1 && user.email.includes("admin@domain.com")
-                      ? "/amazon/admin-dashboard"
-                      : "/amazon/user-dashboard"
-                  }
+              <div className="dropdown p-2">
+                <button
+                  className="dropdown-toggle border-0"
+                  id="dropdownId"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  <FontAwesomeIcon icon={faUser} className="me-1" />
-                  {user.name}
+                  Categories
+                </button>
+                <div className="dropdown-menu" aria-labelledby="dropdownId">
+                  <Link className="dropdown-item" to="/amazon/category/clothes">Clothes</Link>
+                  <Link className="dropdown-item" to="/amazon/category/electronics">Electronics</Link>
+                  <Link className="dropdown-item" to="/amazon/category/sports">Sports</Link>
+                </div>
+              </div>
+              <input
+                className="form-control border-0"
+                type="text"
+                placeholder="Search for item or category..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <button className="btn btn-warning border-0" type="submit">
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            </form>
+
+            <ul className="navbar-nav d-flex flex-row align-items-center gap-3 ms-md-3">
+              {!user ? (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/amazon/auth" onClick={() => setCollapsed(true)}>
+                    <FontAwesomeIcon icon={faSignInAlt} /> Login
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      to={
+                        user.id === 1 && user.email.includes("admin@domain.com")
+                          ? "/amazon/admin-dashboard"
+                          : "/amazon/user-dashboard"
+                      }
+                      onClick={() => setCollapsed(true)}
+                    >
+                      <FontAwesomeIcon icon={faUser} className="me-1" />
+                      {user.name}
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <button className="btn btn-outline-danger" onClick={handleLogout}>
+                      Logout
+                    </button>
+                  </li>
+                </>
+              )}
+              <li className="nav-item">
+                <Link className="nav-link" to="/amazon/cart" onClick={() => setCollapsed(true)}>
+                  <FontAwesomeIcon icon={faShoppingCart} />
                 </Link>
               </li>
-              {/* 👇 This shows for both users & admin */}
-              <li className="nav-item">
-                <button className="btn btn-outline-danger" onClick={handleLogout}>
-                  Logout
-                </button>
-              </li>
-            </>
-          )}
+            </ul>
 
-          <li className="nav-item">
-            <Link className="nav-link" to="/amazon/cart">
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </Link>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </nav>
   );

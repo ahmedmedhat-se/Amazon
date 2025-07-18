@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/header.css";
-import kidsImage from "../assets/kids.png";
+import brandLogo from "../assets/shop.png";
 import Products from "../store/pages/Products.jsx";
 
 function Homepage() {
@@ -18,7 +18,7 @@ function Homepage() {
             <Link className="btn btn-dark" to={""}>Explore</Link>
           </div>
           <div className="header-image">
-            <img src={kidsImage}/>
+            <img src={brandLogo}/>
           </div>
         </header>
       </div>
