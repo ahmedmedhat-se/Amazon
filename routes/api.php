@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource("/products", ProductsController::class);
 
+Route::get('/user/{id}', [AuthController::class, 'show']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 

@@ -1,7 +1,6 @@
 # 🚀 Amazon E-Commerce Backend API 
 
-![Laravel Logo](https://laravel.com/img/logomark.min.svg) ![MySQL Logo](https://www.mysql.com/common/logos/logo-mysql-170x115.png) ![Postman Logo](https://www.getpostman.com/_ar-assets/images/favicon-1-48.png)  
-
+![Amazon Logo](https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg)  
 *A production-ready REST API for an Amazon-like e-commerce platform built with Laravel, MySQL, and tested with Postman*  
 
 ## 📌 Project Overview  
