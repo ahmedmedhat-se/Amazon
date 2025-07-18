@@ -28,4 +28,4 @@
 
 ## 📜 **License**  
 
-**MIT © Ahmed Medhat AKA MeddyScripts.  **
+**MIT © Ahmed Medhat AKA MeddyScripts.**
