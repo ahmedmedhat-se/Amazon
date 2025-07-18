@@ -1,0 +1,35 @@
+@import url("./root.css");
+
+nav {
+  background-color: var(--navbar-background-color);
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav form .dropdown,
+nav form .dropdown button {
+  border-radius: 10px;
+  background-color: var(--dropdown-background-color);
+  color: var(--navbar-background-color);
+}
+
+nav form input {
+  border-radius: 10px 0 0 10px;
+  padding: 10px;
+}
+
+nav form button {
+  background-color: var(--search-background-color);
+  border-radius: 0 10px 10px 0;
+  color: white;
+  padding: 0 15px;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.2rem;
+  color: var(--dropdown-background-color);
+}
+
+.navbar-brand img {
+  max-height: 50px;
+}

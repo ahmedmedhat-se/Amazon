@@ -1,0 +1,23 @@
+@import url("./root.css");
+
+article {
+  background-color: var(--article-background-color);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 80vh;
+  overflow: hidden;
+}
+
+article .article-content {
+    text-align: center;
+}
+
+article .article-content h2 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}

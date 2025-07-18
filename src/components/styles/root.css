@@ -1,0 +1,10 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #000000;
+
+    --navbar-background-color: #fff;
+    --dropdown-background-color: #333;
+    --search-background-color: rgb(152, 152, 66);
+    --header-background-color: rgb(229, 229, 229);
+    --article-background-color: rgb(229, 229, 229);
+}

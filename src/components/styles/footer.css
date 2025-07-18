@@ -1,0 +1,35 @@
+@import url("./root.css");
+
+footer {
+  background-color: var();
+  color: var(--light);
+  font-family: var(--primary-font-family);
+}
+
+footer .links-row h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+footer .links-row div.links .link {
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  width: fit-content;
+  transition: transform 0.5s ease;
+  
+}
+
+footer .links-row div.links .link:hover {
+  transform: scale(1.1);
+}
+
+footer a {
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+}
+
+footer .row p {
+  font-weight: 500;
+}

@@ -1,0 +1,63 @@
+@import url("./root.css");
+
+header {
+  background-color: var(--header-background-color);
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  min-height: 80vh; 
+  overflow: hidden;
+}
+
+header .header-content {
+  width: 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header .header-content h2 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+header .header-content h2 span {
+  color: var(--search-background-color);
+}
+
+header .header-image {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+header .header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 0 10px 10px 0;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  header .header-content,
+  header .header-image {
+    width: 100%;
+    height: auto;
+  }
+
+  header .header-image img {
+    height: auto;
+    border-radius: 0 0 10px 10px;
+  }
+}

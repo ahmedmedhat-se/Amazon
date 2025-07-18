@@ -1,0 +1,50 @@
+/* Styling The Whole Document */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Styling The Root Node Of The Document */
+html {
+  scroll-behavior: smooth;
+  --primary-clr: #071324;
+  --primary-medium-clr: #fff;
+  --primary-light-clr: #fff;
+  --bg-clr-1: #ffffff;
+  --dark-heading-clr: #071324;
+  --dark-text-clr: #fff;
+  --electric-clr: #2d22a7;
+  --electric-clr-header: #0066ff;
+  --light-heading-clr: #fff;
+  --light-text-clr: #fff;
+}
+/* End Of Styling The Root Node Of The Document */
+
+/* Allow scrolling but hide scrollbar for "Chrome, Safari, Edge" Strt */
+html,
+body {
+  overflow: auto;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+/* Allow scrolling but hide scrollbar for "Chrome, Safari, Edge" End */
+
+/* Styling The Body Section  */
+body {
+  width: 100%;
+  min-height: 100vh;
+}
