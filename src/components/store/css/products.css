@@ -1,12 +1,12 @@
 @import url("./root.css");
 
 .products-container {
-    background-color: var(--primary-color);
+  background: linear-gradient(135deg, rgb(214, 224, 234) 0%, rgb(255, 255, 255) 100%);
 }
 
 .products-container .row .card {
   transition: transform 0.3s ease;
-  background-color: var(--products-background-color);
+  background-color: var(--primary-color);
 }
 
 .card img {
@@ -14,8 +14,9 @@
   object-fit: cover;
 }
 
-.card .card-title, .card .card-text {
-  color: var(--primary-color);
+.card .card-title,
+.card .card-text {
+  color: var(--secondary-color);
 }
 
 .card:hover {

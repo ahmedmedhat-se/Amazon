@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "../styles/header.css";
 import brandLogo from "../assets/shop.png";
 import Products from "../store/pages/Products.jsx";
+import Features from "./Features.jsx";
 
 function Homepage() {
   return (
@@ -15,13 +16,14 @@ function Homepage() {
               Dolores officia aliquid rem natus repellendus 
               maiores minima tempora facere itaque a!
             </p>
-            <Link className="btn btn-dark" to={""}>Explore</Link>
+            <Link className="btn btn-dark" to={"/amazon/about-us"}>Explore</Link>
           </div>
           <div className="header-image">
             <img src={brandLogo}/>
           </div>
         </header>
       </div>
+      <Features />
       <Products />
     </>
   )

@@ -7,8 +7,8 @@ function Polices() {
       <div className="container-fluid p-5">
         <article className="p-5">
           <div className="article-content">
-            <h2>Company's Polices</h2>
-            <p>
+            <h2 className="fw-bold">Company's Polices</h2>
+            <p className="fw-bold fs-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. 
               At sunt rem suscipit vero recusandae? Ipsum laboriosam nemo 
               officia enim natus harum praesentium commodi alias sint? 

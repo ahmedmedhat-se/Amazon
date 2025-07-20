@@ -1,0 +1,33 @@
+@import url("./root.css");
+
+.features-carousel-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.features-carousel {
+  display: flex;
+  gap: 15px;
+  min-width: 100%;
+  padding: 10px;
+}
+
+.feature-card {
+  flex: 0 0 auto;
+  min-width: 200px;
+  background: lightgray;
+  color: var(--secondary-color);
+  padding: 20px 15px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.icon-wrap {
+  margin-bottom: 10px;
+}

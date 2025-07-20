@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Importing Layouts
 import MainLayout from "./components/layout/MainLayout.jsx";
+
+// Importing Our Store Provider
 import ProductProvider from "./components/store/context/ProductsContext.jsx";
 
 // Importing Auth Components
@@ -12,6 +14,7 @@ import UserDashboard from "./components/auth/UserDashboard.jsx";
 // Importing Main Website Views
 import Homepage from "./components/views/Homepage.jsx";
 import Polices from "./components/views/Polices.jsx";
+import AboutUs from "./components/views/AboutUs.jsx";
 
 // Importing Store Components
 import Products from "./components/store/pages/Products.jsx";
@@ -25,6 +28,7 @@ const routes = createBrowserRouter([{
   children: [
     { index: true, element: <Homepage /> },
     { path: "polices", element: <Polices /> },
+    { path: "about-us", element: <AboutUs /> },
     { path: "products", element: <Products /> },
     {
       path: "category", children: [

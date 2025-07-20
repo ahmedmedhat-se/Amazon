@@ -40,7 +40,7 @@ function Footer() {
         <div className="col-md-3 mb-3">
           <h2>About Us</h2>
           <div className="links">
-            <p className="link d-block" onClick={() => handleLinkClick("/amazon/about")}>Our Story</p>
+            <p className="link d-block" onClick={() => handleLinkClick("/amazon/about-us")}>Our Story</p>
             <p className="link d-block" onClick={() => handleLinkClick("/amazon/polices")}>Policies</p>
             <p className="link d-block" onClick={() => handleLinkClick("/amazon/careers")}>Careers</p>
           </div>

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 function Electronics() {
   const { products } = useContext(ProductsContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
+  const productsPerPage = 8;
 
   const electronicsProducts = products.filter(
     (product) => product.product_category?.toLowerCase() === "electronics"
@@ -39,6 +39,9 @@ function Electronics() {
                 <div className="card-body">
                   <h5 className="card-title text-capitalize">{product.product_name}</h5>
                   <p className="card-text">{product.product_desc}</p>
+                  <span className="badge bg-info border-0">
+                    {product.product_category}
+                  </span>
 
                   <div className="mb-2">
                     {Array.from({ length: 5 }, (_, index) => (
@@ -49,10 +52,7 @@ function Electronics() {
                   </div>
 
                   <div className="d-flex justify-content-between card-footer align-items-center">
-                    <span className="fw-bold text-light">${product.product_price}</span>
-                    <button className="badge bg-info border-0">
-                      {product.product_category}
-                    </button>
+                    <span className="fw-bold text-success">${product.product_price}</span>
                     <Link className="btn btn-dark btn-sm text-light w-50" to="/amazon/cart">Cart</Link>
                   </div>
                 </div>
