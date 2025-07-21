@@ -150,14 +150,13 @@ function AuthForm() {
             </>
           )}
 
-          <button type="submit" className="btn btn-primary w-100 my-3 shadow-sm">
+          <button type="submit" className="btn btn-dark w-100 my-3 shadow-sm">
             {isLogin ? "Login" : "Register"}
           </button>
         </form>
 
         <div className="text-center">
-          <button
-            className="btn btn-link"
+          <p
             onClick={() => {
               setIsLogin(!isLogin);
               setForm({
@@ -170,8 +169,11 @@ function AuthForm() {
               setMessage("");
             }}
           >
-            {isLogin ? "Don't have an account? Sign Up" : "Already have an account? Login"}
-          </button>
+            {isLogin 
+            ? <p>Don't have an account? <span className="text-primary">Sign Up</span></p> 
+            : <p>Already have an account? <span className="text-primary">Login</span></p>
+            }
+          </p>
         </div>
       </div>
     </div>

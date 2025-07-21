@@ -4,6 +4,8 @@
     background: var(--view-color);
 }
 
-.card-img-top {
-    height: 100%;
+.card {
+    border-radius: 10px;
+    transition: none;
+    animation: none;
 }

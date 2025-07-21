@@ -35,3 +35,23 @@
   transform: translateY(-5px);
   border: none;
 }
+
+.page-item {
+  padding: 10px 0;
+}
+
+.page-item .page-link {
+  color: #333;
+  border-radius: 6px;
+  margin: 0 10px;
+}
+
+.page-item.active .page-link {
+  background-color: #343a40;
+  border-color: #343a40;
+  color: white;
+}
+
+.page-item.disabled .page-link {
+  pointer-events: none;
+}

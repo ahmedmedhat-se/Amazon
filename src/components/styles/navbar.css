@@ -49,3 +49,9 @@ nav form button {
 .dropdown-submenu:hover .dropdown-menu {
   display: block;
 }
+
+.nav-item .badge {
+  font-size: 0.6rem;
+  padding: 5px 7px;
+  z-index: 10;
+}
