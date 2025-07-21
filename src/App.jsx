@@ -3,6 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // Importing Layouts
 import MainLayout from "./components/layout/MainLayout.jsx";
 
+// Importing Error Element
+import NotFound from "./components/main/NotFound.jsx";
+
 // Importing Our Store Provider
 import ProductProvider from "./components/store/context/ProductsContext.jsx";
 
@@ -13,7 +16,7 @@ import UserDashboard from "./components/auth/UserDashboard.jsx";
 
 // Importing Main Website Views
 import Homepage from "./components/views/Homepage.jsx";
-import Polices from "./components/views/Polices.jsx";
+import Policies from "./components/views/Policies.jsx";
 import AboutUs from "./components/views/AboutUs.jsx";
 
 // Importing Store Components
@@ -21,15 +24,21 @@ import Products from "./components/store/pages/Products.jsx";
 import Clothes from "./components/store/pages/Clothes.jsx";
 import Electronics from "./components/store/pages/Electronics.jsx";
 import Sports from "./components/store/pages/Sports.jsx";
+import Cart from "./components/store/pages/Cart.jsx";
+
+// Importing Guards
+import ProtectedRoute from "./components/auth/ProtectedRoute.jsx";
 
 const routes = createBrowserRouter([{
   path: "/amazon/",
   element: <MainLayout />,
+  errorElement: <NotFound />,
   children: [
     { index: true, element: <Homepage /> },
-    { path: "polices", element: <Polices /> },
+    { path: "policies", element: <Policies /> },
     { path: "about-us", element: <AboutUs /> },
     { path: "products", element: <Products /> },
+    { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
     {
       path: "category", children: [
         { path: "clothes", element: <Clothes /> },
@@ -38,8 +47,22 @@ const routes = createBrowserRouter([{
       ]
     },
     { path: "auth", element: <AuthForm /> },
-    { path: "admin-dashboard", element: <AdminDashboard /> },
-    { path: "user-dashboard", element: <UserDashboard /> }
+    {
+      path: "user-dashboard",
+      element: (
+        <ProtectedRoute>
+          <UserDashboard />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: "admin-dashboard",
+      element: (
+        <ProtectedRoute>
+          <AdminDashboard />
+        </ProtectedRoute>
+      ),
+    },
   ]
 }]);
 

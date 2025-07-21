@@ -25,7 +25,7 @@ function AboutUs() {
                         <span className="me-3"><FontAwesomeIcon icon={faMailForward} /></span>
                         <p className="fw-bold">compnay.contact@domain.com</p>
                     </div>
-                    <Link className="btn btn-dark" to={"/amazon/polices"}>Polices</Link>
+                    <Link className="btn btn-dark" to={"/amazon/polices"}>Policies</Link>
                 </div>
             </div>
             <div className="location">

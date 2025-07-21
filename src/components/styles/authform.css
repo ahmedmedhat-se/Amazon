@@ -1,7 +1,7 @@
 @import url("./root.css");
 
 .auth-container {
-  background: linear-gradient(to right, #ece9e6, #ffffff);
+  background: var(--view-color);
   width: 100%;
   padding: 2rem 1rem;
 }
@@ -14,7 +14,7 @@
 }
 
 .auth-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-1px);
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
 }
 

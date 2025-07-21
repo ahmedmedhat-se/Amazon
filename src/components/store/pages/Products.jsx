@@ -1,21 +1,21 @@
 import { useContext, useState } from "react";
 import { ProductsContext } from "../context/ProductsContext.jsx";
 import "../css/products.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Products() {
   const { products } = useContext(ProductsContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
+  const productsPerPage = 12;
+  const navigate = useNavigate();
 
   const indexOfLast = currentPage * productsPerPage;
   const indexOfFirst = indexOfLast - productsPerPage;
   const currentProducts = products.slice(indexOfFirst, indexOfLast);
-  const totalPages = Math.ceil(products.length / productsPerPage);
 
-  const goToPage = (pageNum) => {
-    setCurrentPage(pageNum);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleCartClick = (product) => {
+    localStorage.setItem('selectedProduct', JSON.stringify(product));
+    navigate("/amazon/cart");
   };
 
   return (
@@ -45,25 +45,18 @@ function Products() {
                 </div>
                 <div className="d-flex justify-content-between card-footer align-items-center">
                   <span className="fw-bold text-success">${product.product_price}</span>
-                  <Link className="btn btn-dark btn-sm text-light w-50" to={"/amazon/cart"}>Cart</Link>
+                  <button 
+                    className="btn btn-dark btn-sm text-light w-50" 
+                    onClick={() => handleCartClick(product)}
+                  >
+                    Cart
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-
-      <nav className="mt-5 d-flex justify-content-center">
-        <ul className="pagination">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <li key={index + 1} className={`page-item ${currentPage === index + 1 ? "active" : ""}`}>
-              <button className="page-link m-1" onClick={() => goToPage(index + 1)}>
-                {index + 1}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
     </div>
   );
 }

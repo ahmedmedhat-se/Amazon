@@ -1,5 +1,6 @@
 :root {
     --primary-color: #ffffff;
     --secondary-color: #000000;
+    --view-color: linear-gradient(135deg, rgb(214, 224, 234) 0%, rgb(255, 255, 255) 100%);
     --search-background-color: rgb(146, 146, 68);
 }

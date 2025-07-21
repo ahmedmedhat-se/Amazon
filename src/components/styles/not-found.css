@@ -1,0 +1,8 @@
+.not-found {
+    transition: ease transform 1s;
+}
+
+.not-found:hover {
+    cursor: pointer;
+    transform: translateY(-3);
+}

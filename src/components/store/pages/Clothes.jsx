@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import { ProductsContext } from "../context/ProductsContext.jsx";
 import "../css/products.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Clothes() {
   const { products } = useContext(ProductsContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
+  const productsPerPage = 6;
+  const navigate = useNavigate();
 
   const clothesProducts = products.filter(
     (product) => product.product_category?.toLowerCase() === "clothes"
@@ -22,11 +23,15 @@ function Clothes() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleCartClick = (product) => {
+    localStorage.setItem('selectedProduct', JSON.stringify(product));
+    navigate("/amazon/cart");
+  };
+
   return (
     <div className="container-fluid p-5 products-container">
       <div className="row g-4">
         <h2 className="text-center">Amazon Clothes</h2>
-
         {currentProducts.length > 0 ? (
           currentProducts.map((product) => (
             <div className="col-md-6 col-lg-4" key={product.id}>
@@ -42,7 +47,6 @@ function Clothes() {
                   <span className="badge bg-info border-0">
                     {product.product_category}
                   </span>
-
                   <div className="mb-2">
                     {Array.from({ length: 5 }, (_, index) => (
                       <span key={index} style={{ color: index < product.product_ratings ? "#ffc107" : "#e4e5e9", fontSize: "1rem" }}>
@@ -50,10 +54,14 @@ function Clothes() {
                       </span>
                     ))}
                   </div>
-
                   <div className="d-flex justify-content-between card-footer align-items-center">
                     <span className="fw-bold text-success">${product.product_price}</span>
-                    <Link className="btn btn-dark btn-sm text-light w-50" to="/amazon/cart">Cart</Link>
+                    <button
+                      className="btn btn-dark btn-sm text-light w-50"
+                      onClick={() => handleCartClick(product)}
+                    >
+                      Cart
+                    </button>
                   </div>
                 </div>
               </div>

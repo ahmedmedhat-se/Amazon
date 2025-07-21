@@ -1,23 +1,63 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import "../styles/profile.css";
 
 function UserDashboard() {
   const [user, setUser] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    const fetchUserData = async () => {
+      const storedUser = localStorage.getItem("user");
 
-    if (storedUser) {
-      try {
-        const parsedUser = JSON.parse(storedUser);
-        setUser(parsedUser);
-      } catch (error) {
-        console.error("Failed to parse user data:", error);
+      if (storedUser) {
+        try {
+          const parsedUser = JSON.parse(storedUser);
+          setUser(parsedUser);
+
+          const response = await axios.get('http://127.0.0.1:8000/api/cart', {
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+          });
+
+          if (response.data.success) {
+            setCartItems(response.data.data);
+          }
+        } catch (error) {
+          console.error("Failed to fetch data:", error);
+        } finally {
+          setLoading(false);
+        }
+      } else {
+        console.warn("No user data found in localStorage.");
+        setLoading(false);
       }
-    } else {
-      console.warn("No user data found in localStorage.");
-    }
+    };
+
+    fetchUserData();
   }, []);
+
+  const handleRemoveFromCart = async (itemId) => {
+    try {
+      const response = await axios.delete(`http://127.0.0.1:8000/api/cart/${itemId}`, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+      if (response.data.success) {
+        setCartItems(cartItems.filter(item => item.id !== itemId));
+      }
+    } catch (error) {
+      console.error("Failed to remove item:", error);
+    }
+  };
+
+  if (loading) {
+    return <div className="profile">Loading...</div>;
+  }
 
   return (
     <div className="profile">
@@ -31,9 +71,9 @@ function UserDashboard() {
             />
           </div>
           <div className="profile-card-body">
-            <h2>{user ? user.name : "Loading..."}</h2>
-            <p>{user ? user.email : ""}</p>
-            <p>{user ? user.phone || "No Phone Provided" : ""}</p>
+            <h2 className="fw-bold">{user ? user.name : "Guest"}</h2>
+            <p className="text-secondary fw-bold">{user ? user.email : ""}</p>
+            <p className="text-secondary fw-bold">{user ? user.phone || "No Phone Provided" : ""}</p>
           </div>
           <div className="profile-card-footer">
             <button className="btn btn-outline-warning">Edit</button>
@@ -45,31 +85,54 @@ function UserDashboard() {
         <div className="payments">
           <div className="profile-card">
             <div className="profile-card-header">
-              <h4 className="profile-card-title">Payments</h4>
+              <h4 className="profile-card-title text-dark">Payments</h4>
             </div>
             <div className="profile-card-body">
-              <p className="profile-card-text">Product One</p>
-              <p className="profile-card-text">Product One</p>
-              <p className="profile-card-text">Product One</p>
+              {cartItems.length > 0 ? (
+                cartItems.map(item => (
+                  <div key={item.id} className="d-flex justify-content-between align-items-center mb-2">
+                    <span className="fw-bold">{item.product.name} (x{item.quantity})</span>
+                    <span className="text-success fw-bold">${item.product.price * item.quantity}</span>
+                  </div>
+                ))
+              ) : (
+                <p className="profile-card-text">No payment history</p>
+              )}
             </div>
-            <div className="profile-card-footer">
-              <button className="btn btn-outline-warning">Edit</button>
-            </div>
+            {cartItems.length > 0 && (
+              <div className="profile-card-footer">
+                <button className="btn btn-primary">Checkout</button>
+              </div>
+            )}
           </div>
         </div>
 
         <div className="cart">
           <div className="profile-card">
             <div className="profile-card-header">
-              <h4 className="profile-card-title">Cart</h4>
+              <h4 className="profile-card-title text-dark">Cart</h4>
             </div>
             <div className="profile-card-body">
-              <p className="profile-card-text">Product One</p>
-              <p className="profile-card-text">Product One</p>
-              <p className="profile-card-text">Product One</p>
+              {cartItems.length > 0 ? (
+                cartItems.map(item => (
+                  <div key={item.id} className="d-flex justify-content-between align-items-center mb-2">
+                    <span className="fw-bold">{item.product.name} (x{item.quantity})</span>
+                    <button
+                      onClick={() => handleRemoveFromCart(item.id)}
+                      className="btn btn-sm btn-outline-danger"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <p className="profile-card-text">Your cart is empty</p>
+              )}
             </div>
-            <div className="profile-card-footer">
-              <button className="btn btn-outline-warning">Edit</button>
+            <div className="profile-card-footer d-flex justify-content-between">
+              <span className="text-success fw-bold">
+                Total: ${cartItems.reduce((sum, item) => sum + (item.product.price * item.quantity), 0)}
+              </span>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ function Footer() {
   };
 
   return (
-    <footer className="container-fluid p-5">
+    <footer className="container-fluid p-3">
       <div className="row mb-3 links-row p-4">
         <div className="col-md-3 mb-3">
           <img
@@ -41,7 +41,7 @@ function Footer() {
           <h2>About Us</h2>
           <div className="links">
             <p className="link d-block" onClick={() => handleLinkClick("/amazon/about-us")}>Our Story</p>
-            <p className="link d-block" onClick={() => handleLinkClick("/amazon/polices")}>Policies</p>
+            <p className="link d-block" onClick={() => handleLinkClick("/amazon/policies")}>Policies</p>
             <p className="link d-block" onClick={() => handleLinkClick("/amazon/careers")}>Careers</p>
           </div>
         </div>

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import "../styles/polices.css";
+import "../styles/policies.css";
 
-function Polices() {
+function Policies() {
   return (
     <>
       <div className="container-fluid p-5">
         <article className="p-5">
           <div className="article-content">
-            <h2 className="fw-bold">Company's Polices</h2>
+            <h2 className="fw-bold">Company's Policies</h2>
             <p className="fw-bold fs-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. 
               At sunt rem suscipit vero recusandae? Ipsum laboriosam nemo 
@@ -30,4 +30,4 @@ function Polices() {
   )
 }
 
-export default Polices;
+export default Policies;

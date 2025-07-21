@@ -1,7 +1,7 @@
 @import url("./root.css");
 
 .products-container {
-  background: linear-gradient(135deg, rgb(214, 224, 234) 0%, rgb(255, 255, 255) 100%);
+  background: var(--view-color);
 }
 
 .products-container .row .card {

@@ -1,6 +1,7 @@
 :root {
     --primary-color: #ffffff;
     --secondary-color: #000000;
+    --view-color: linear-gradient(135deg, rgb(146, 170, 196) 0%, rgb(239, 236, 236) 100%);
 
     --navbar-background-color: #fff;
     --dropdown-background-color: #333;
