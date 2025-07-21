@@ -38,6 +38,12 @@ class CartController extends Controller
         ]);
     }
 
+    public function getCartCount($user_id)
+    {
+        $count = Cart::where('user_id', $user_id)->sum('quantity');
+        return response()->json(['count' => $count]);
+    }
+
     /**
      * Add a product to cart
      */
@@ -49,8 +55,8 @@ class CartController extends Controller
         ]);
 
         $existingCartItem = Cart::where('user_id', Auth::id())
-                              ->where('product_id', $validated['product_id'])
-                              ->first();
+            ->where('product_id', $validated['product_id'])
+            ->first();
 
         if ($existingCartItem) {
             $existingCartItem->increment('quantity', $validated['quantity']);
