@@ -25,6 +25,8 @@ function Navbar() {
 
     if (["clothes", "sports", "electronics"].includes(keyword)) {
       navigate(`/amazon/category/${keyword}`);
+    } else if (["men", "women", "kids"].includes(keyword)) {
+      navigate(`/amazon/category/clothes/${keyword}`);
     } else {
       navigate(`/amazon/${keyword}`);
     }
@@ -44,7 +46,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-md navbar-light bg-light p-3">
       <div className="container-fluid">
         <Link className="navbar-brand me-3" to="/amazon/">
-          <img src={logo} alt="Logo" width={100} className="rounded" />
+          <img src={logo} alt="Logo" width={100} />
         </Link>
 
         <button
@@ -57,7 +59,6 @@ function Navbar() {
 
         <div className={`collapse navbar-collapse w-100 ${collapsed ? "" : "show"}`}>
           <div className="d-flex flex-column flex-md-row justify-content-between align-items-center w-100">
-
             <form
               onSubmit={handleSearch}
               className="d-flex align-items-center input-group mx-md-auto my-3 my-md-0"
@@ -74,7 +75,16 @@ function Navbar() {
                   Categories
                 </button>
                 <div className="dropdown-menu" aria-labelledby="dropdownId">
-                  <Link className="dropdown-item" to="/amazon/category/clothes">Clothes</Link>
+                  <div className="dropdown-submenu dropdown-hover">
+                    <Link className="dropdown-item dropdown-toggle" to="#" onClick={e => e.preventDefault()}>
+                      Clothes
+                    </Link>
+                    <div className="dropdown-menu">
+                      <Link className="dropdown-item" to="/amazon/category/clothes/men">Men</Link>
+                      <Link className="dropdown-item" to="/amazon/category/clothes/women">Women</Link>
+                      <Link className="dropdown-item" to="/amazon/category/clothes/kids">Kids</Link>
+                    </div>
+                  </div>
                   <Link className="dropdown-item" to="/amazon/category/electronics">Electronics</Link>
                   <Link className="dropdown-item" to="/amazon/category/sports">Sports</Link>
                 </div>

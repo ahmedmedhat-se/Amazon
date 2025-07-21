@@ -1,9 +1,8 @@
 @import url("./root.css");
 
 .aboutUs-container {
-    background-color: var(--primary-color);
+    background: var(--article-background-color);
     display: flex;
-
 }
 
 .aboutInfo {
@@ -13,19 +12,7 @@
 .aboutInfo h2 {
     text-align: center;
     font-weight: bold;
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    padding: 5px;
     width: 100%;
-    border-radius: 15px;
-    transition: transform 0.5s ease;
-}
-
-.aboutInfo h2:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    background-color: var(--dropdown-background-color);
-    color: var(--primary-color);
 }
 
 .aboutInfo .website-logo {

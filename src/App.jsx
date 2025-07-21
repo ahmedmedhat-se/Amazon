@@ -22,6 +22,9 @@ import AboutUs from "./components/views/AboutUs.jsx";
 // Importing Store Components
 import Products from "./components/store/pages/Products.jsx";
 import Clothes from "./components/store/pages/Clothes.jsx";
+import MenClothes from "./components/store/pages/MenClothes.jsx";
+import WomenClothes from "./components/store/pages/WomenClothes.jsx";
+import KidsClothes from "./components/store/pages/KidsClothes.jsx";
 import Electronics from "./components/store/pages/Electronics.jsx";
 import Sports from "./components/store/pages/Sports.jsx";
 import Cart from "./components/store/pages/Cart.jsx";
@@ -41,7 +44,10 @@ const routes = createBrowserRouter([{
     { path: "cart", element: <ProtectedRoute><Cart /></ProtectedRoute> },
     {
       path: "category", children: [
-        { path: "clothes", element: <Clothes /> },
+        { path: "clothes", element: <Clothes />},
+        { path: "clothes/men", element: <MenClothes />},
+        { path: "clothes/women", element: <WomenClothes />},
+        { path: "clothes/kids", element: <KidsClothes />},
         { path: "electronics", element: <Electronics /> },
         { path: "sports", element: <Sports /> }
       ]

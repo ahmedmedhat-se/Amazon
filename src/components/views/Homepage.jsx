@@ -7,7 +7,7 @@ import Features from "./Features.jsx";
 function Homepage() {
   return (
     <>
-      <div className="container-fluid p-5">
+      <div className="container-fluid p-4">
         <header className="p-5">
           <div className="header-content">
             <h2>Let's Explore <span>New</span> Clothes!</h2>

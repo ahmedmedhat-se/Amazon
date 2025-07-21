@@ -1,29 +1,19 @@
-import { useContext, useState } from "react";
-import { ProductsContext } from "../context/ProductsContext.jsx";
-import "../css/products.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Products() {
-  const { products } = useContext(ProductsContext);
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 20;
+function ProductGrid({ products, title }) {
   const navigate = useNavigate();
 
-  const indexOfLast = currentPage * productsPerPage;
-  const indexOfFirst = indexOfLast - productsPerPage;
-  const currentProducts = products.slice(indexOfFirst, indexOfLast);
-
   const handleCartClick = (product) => {
-    localStorage.setItem('selectedProduct', JSON.stringify(product));
+    localStorage.setItem("selectedProduct", JSON.stringify(product));
     navigate("/amazon/cart");
   };
 
   return (
-    <div className="container-fluid p-5 products-container">
-      <div className="row g-4">
-        <h2 className="text-center">Amazon Products!</h2>
-        {currentProducts.map((product) => (
-          <div className="col-md-6 col-lg-3" key={product.id}>
+    <div className="row g-4">
+      <h2 className="text-center">{title}</h2>
+      {products.length > 0 ? (
+        products.map((product) => (
+          <div className="col-md-6 col-lg-4" key={product.id}>
             <div className="card h-100 shadow-sm border-0">
               <img
                 src={`http://127.0.0.1:8000/${product.product_image}`}
@@ -45,8 +35,8 @@ function Products() {
                 </div>
                 <div className="d-flex justify-content-between card-footer align-items-center">
                   <span className="fw-bold text-success">${product.product_price}</span>
-                  <button 
-                    className="btn btn-dark btn-sm text-light w-50" 
+                  <button
+                    className="btn btn-dark btn-sm text-light w-50"
                     onClick={() => handleCartClick(product)}
                   >
                     Cart
@@ -55,10 +45,14 @@ function Products() {
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        ))
+      ) : (
+        <div className="text-center text-muted mt-5">
+          <p>No products found.</p>
+        </div>
+      )}
     </div>
   );
 }
 
-export default Products;
+export default ProductGrid;

@@ -61,28 +61,26 @@ function Cart() {
     <div className="container-fluid cart-page p-5">
       <div className="row">
         <div className="col-md-6">
-          <div className="card">
-            <img
-              src={`http://127.0.0.1:8000/${product.product_image}`}
-              alt={product.product_name}
-              className="card-img-top"
-            />
-          </div>
+          <img
+            src={`http://127.0.0.1:8000/${product.product_image}`}
+            alt={product.product_name}
+            className="card-img-top"
+          />
         </div>
         <div className="col-md-6">
           <div className="product-details">
-            <h2>{product.product_name}</h2>
-            <p>{product.product_desc}</p>
-            <div className="ratings mb-3">
+            <h2 className="fw-bold fs-1">{product.product_name}</h2>
+            <p className="fw-bold fs-5">{product.product_desc}</p>
+            <div className="ratings mb-3 fs-5">
               {Array.from({ length: 5 }, (_, index) => (
                 <span key={index} style={{ color: index < product.product_ratings ? "#ffc107" : "#e4e5e9" }}>
                   ★
                 </span>
               ))}
             </div>
-            <p className="price">${product.product_price}</p>
+            <p className="price fw-bold fs-5">${product.product_price}</p>
             <div className="quantity-selector mb-3">
-              <label htmlFor="quantity">Quantity:</label>
+              <label htmlFor="quantity" className="fw-bold fs-5">Quantity:</label>
               <input
                 type="number"
                 id="quantity"
@@ -97,7 +95,7 @@ function Cart() {
                   );
                   setQuantity(validValue);
                 }}
-                className="form-control w-25"
+                className="form-control w-50 fw-bold"
               />
               <small className="text-muted">
                 Available: {product.product_quantity}
@@ -105,7 +103,7 @@ function Cart() {
             </div>
             <button
               onClick={handleAddToProfile}
-              className="btn btn-primary btn-lg"
+              className="btn btn-dark btn-lg"
             >
               Add to My Cart
             </button>

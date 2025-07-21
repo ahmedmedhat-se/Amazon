@@ -3,3 +3,7 @@
 .cart-page {
     background: var(--view-color);
 }
+
+.card-img-top {
+    height: 100%;
+}

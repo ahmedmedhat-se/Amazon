@@ -16,7 +16,7 @@ function AboutUs() {
                     itaque quo harum veritatis assumenda dolor autem sit labore!
                 </p>
                 <div className="contact-info mt-5">
-                    <h3>Contact Info</h3>
+                    <h2>Contact Info</h2>
                     <div className="container-fluid d-flex">
                         <span className="me-3"><FontAwesomeIcon icon={faPhone} /></span>
                         <p className="fw-bold">0123456789</p>
@@ -25,7 +25,7 @@ function AboutUs() {
                         <span className="me-3"><FontAwesomeIcon icon={faMailForward} /></span>
                         <p className="fw-bold">compnay.contact@domain.com</p>
                     </div>
-                    <Link className="btn btn-dark" to={"/amazon/polices"}>Policies</Link>
+                    <Link className="btn btn-dark" to={"/amazon/policies"}>Policies</Link>
                 </div>
             </div>
             <div className="location">

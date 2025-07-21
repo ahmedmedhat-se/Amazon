@@ -33,3 +33,19 @@ nav form button {
 .navbar-brand img {
   max-height: 50px;
 }
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-left: 0.1rem;
+  display: none;
+  position: absolute;
+}
+
+.dropdown-submenu:hover .dropdown-menu {
+  display: block;
+}
