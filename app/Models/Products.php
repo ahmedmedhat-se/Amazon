@@ -11,7 +11,17 @@ class Products extends Model
     use HasFactory;
 
     protected $fillable = [
-        "product_name", "product_category", "product_desc", "product_image", 
-        "product_price", "product_quantity", "product_ratings"
+        "product_name",
+        "product_category",
+        "product_desc",
+        "product_image",
+        "product_price",
+        "product_quantity",
+        "product_ratings"
     ];
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
